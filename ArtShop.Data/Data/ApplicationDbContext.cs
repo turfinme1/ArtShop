@@ -1,4 +1,5 @@
-﻿using ArtShop.Data.Models;
+﻿using ArtShop.Data.Data.Configurations;
+using ArtShop.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,20 +14,9 @@ namespace ArtShop.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<ArtworkOrder>()
-                .HasOne(a=>a.Order)
-                .WithMany(a=>a.ArtworksOrders)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<ArtworkCategory>()
-                .HasOne(a => a.Category)
-                .WithMany(a => a.ArtworksCategories)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<Review>()
-                .HasOne(e => e.Creator)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.ApplyConfiguration(new ArtworkOrderModelConfiguration());
+            builder.ApplyConfiguration(new ArtworkCategoryModelConfiguration());
+            builder.ApplyConfiguration(new ReviewModelConfiguration());
 
             base.OnModelCreating(builder);
         }
