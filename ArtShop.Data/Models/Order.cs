@@ -21,11 +21,7 @@ namespace ArtShop.Data.Models
         [ForeignKey(nameof(UserId))]
         public required IdentityUser User { get; set; }
 
-        [Required]
-        public int AddressId { get; set; }
-
-        [ForeignKey(nameof(AddressId))]
-        public required Address Address { get; set; }
+        //public List<Artwork> Artworks { get; set; } = [];
 
         public List<ArtworkOrder> ArtworksOrders { get; } = [];
     }

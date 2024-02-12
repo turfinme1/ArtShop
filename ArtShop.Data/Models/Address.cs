@@ -21,7 +21,5 @@ namespace ArtShop.Data.Models
 
         [ForeignKey(nameof(CityId))]
         public required City City { get; set; }
-
-        public List<Order> Orders { get; set; } = [];
     }
 }

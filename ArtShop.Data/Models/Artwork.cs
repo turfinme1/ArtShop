@@ -39,10 +39,14 @@ namespace ArtShop.Data.Models
         [ForeignKey(nameof(CreatorId))]
         public required IdentityUser Creator { get; set; }
 
-        public List<ArtworkCategory> ArtworksCategories { get; set; } = [];
+        public List<Category> Categories { get; set; } = [];
+        
+        public List<ArtworkCategory> ArtworksCategories { get; } = [];
+        
+        //public List<Order> Orders { get; set; } = [];
         
         public List<ArtworkOrder> ArtworksOrders { get; set; } = [];
 
-        public List<Review> Reviews { get; set; } = [];
+        //public List<Review> Reviews { get; set; } = [];
     }
 }

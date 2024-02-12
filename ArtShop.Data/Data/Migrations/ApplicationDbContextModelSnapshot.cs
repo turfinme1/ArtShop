@@ -133,6 +133,9 @@ namespace ArtShop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("ArtworkId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -144,6 +147,8 @@ namespace ArtShop.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArtworkId");
 
                     b.ToTable("Categories");
                 });
@@ -197,9 +202,6 @@ namespace ArtShop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -211,8 +213,6 @@ namespace ArtShop.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
 
                     b.HasIndex("UserId");
 
@@ -515,6 +515,13 @@ namespace ArtShop.Data.Migrations
                     b.Navigation("Order");
                 });
 
+            modelBuilder.Entity("ArtShop.Data.Models.Category", b =>
+                {
+                    b.HasOne("ArtShop.Data.Models.Artwork", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("ArtworkId");
+                });
+
             modelBuilder.Entity("ArtShop.Data.Models.City", b =>
                 {
                     b.HasOne("ArtShop.Data.Models.Country", "Country")
@@ -528,19 +535,11 @@ namespace ArtShop.Data.Migrations
 
             modelBuilder.Entity("ArtShop.Data.Models.Order", b =>
                 {
-                    b.HasOne("ArtShop.Data.Models.Address", "Address")
-                        .WithMany("Orders")
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Address");
 
                     b.Navigation("User");
                 });
@@ -548,7 +547,7 @@ namespace ArtShop.Data.Migrations
             modelBuilder.Entity("ArtShop.Data.Models.Review", b =>
                 {
                     b.HasOne("ArtShop.Data.Models.Artwork", "Artwork")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("ArtworkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -615,18 +614,13 @@ namespace ArtShop.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ArtShop.Data.Models.Address", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("ArtShop.Data.Models.Artwork", b =>
                 {
                     b.Navigation("ArtworksCategories");
 
                     b.Navigation("ArtworksOrders");
 
-                    b.Navigation("Reviews");
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("ArtShop.Data.Models.Category", b =>
