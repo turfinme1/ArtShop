@@ -15,9 +15,7 @@ namespace ArtShop.Data.Models
         [Required]
         [MaxLength(DescriptionMaxLength)]
         public required string Description { get; set; }
-
-        //public List<Artwork> Artworks { get; set; } = [];
-
+        
         public List<ArtworkCategory> ArtworksCategories { get; } = [];
     }
 }

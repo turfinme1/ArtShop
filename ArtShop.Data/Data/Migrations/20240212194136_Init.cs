@@ -38,6 +38,20 @@ namespace ArtShop.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -72,26 +86,6 @@ namespace ArtShop.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Categories_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -116,6 +110,30 @@ namespace ArtShop.Data.Migrations
                         name: "FK_Reviews_AspNetUsers_CreatorId",
                         column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ArtworksCategories",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ArtworkId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ArtworksCategories", x => new { x.CategoryId, x.ArtworkId });
+                    table.ForeignKey(
+                        name: "FK_ArtworksCategories_Artworks_ArtworkId",
+                        column: x => x.ArtworkId,
+                        principalTable: "Artworks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ArtworksCategories_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -165,30 +183,6 @@ namespace ArtShop.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ArtworksCategories",
-                columns: table => new
-                {
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    ArtworkId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ArtworksCategories", x => new { x.CategoryId, x.ArtworkId });
-                    table.ForeignKey(
-                        name: "FK_ArtworksCategories_Artworks_ArtworkId",
-                        column: x => x.ArtworkId,
-                        principalTable: "Artworks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ArtworksCategories_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
@@ -227,11 +221,6 @@ namespace ArtShop.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ArtworksOrders_ArtworkId",
                 table: "ArtworksOrders",
-                column: "ArtworkId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Categories_ArtworkId",
-                table: "Categories",
                 column: "ArtworkId");
 
             migrationBuilder.CreateIndex(
@@ -280,10 +269,10 @@ namespace ArtShop.Data.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "Artworks");
 
             migrationBuilder.DropTable(
-                name: "Artworks");
+                name: "Countries");
         }
     }
 }

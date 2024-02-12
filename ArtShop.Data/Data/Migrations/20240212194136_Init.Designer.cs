@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArtShop.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240212185158_Init")]
+    [Migration("20240212194136_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -136,9 +136,6 @@ namespace ArtShop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ArtworkId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -150,8 +147,6 @@ namespace ArtShop.Data.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ArtworkId");
 
                     b.ToTable("Categories");
                 });
@@ -518,13 +513,6 @@ namespace ArtShop.Data.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("ArtShop.Data.Models.Category", b =>
-                {
-                    b.HasOne("ArtShop.Data.Models.Artwork", null)
-                        .WithMany("Categories")
-                        .HasForeignKey("ArtworkId");
-                });
-
             modelBuilder.Entity("ArtShop.Data.Models.City", b =>
                 {
                     b.HasOne("ArtShop.Data.Models.Country", "Country")
@@ -550,7 +538,7 @@ namespace ArtShop.Data.Migrations
             modelBuilder.Entity("ArtShop.Data.Models.Review", b =>
                 {
                     b.HasOne("ArtShop.Data.Models.Artwork", "Artwork")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("ArtworkId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -623,7 +611,7 @@ namespace ArtShop.Data.Migrations
 
                     b.Navigation("ArtworksOrders");
 
-                    b.Navigation("Categories");
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("ArtShop.Data.Models.Category", b =>
