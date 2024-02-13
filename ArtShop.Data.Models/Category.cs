@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static ArtShop.Data.Common.GlobalConstants.CategoryValidationConstants;
+using static ArtShop.Data.Common.ValidationConstants.CategoryValidationConstants;
 
 namespace ArtShop.Data.Models
 {

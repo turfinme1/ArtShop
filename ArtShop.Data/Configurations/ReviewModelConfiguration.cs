@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ArtShop.Data.Data.Configurations
+namespace ArtShop.Data.Configurations
 {
     public class ReviewModelConfiguration : IEntityTypeConfiguration<Review>
     {

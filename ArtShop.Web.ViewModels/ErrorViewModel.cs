@@ -1,4 +1,4 @@
-namespace ArtShop.Models
+namespace ArtShop.Web.ViewModels
 {
     public class ErrorViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static ArtShop.Data.Common.GlobalConstants.ArtworkValidationConstants;
+using static ArtShop.Data.Common.ValidationConstants.ArtworkValidationConstants;
 
 namespace ArtShop.Data.Models
 {
@@ -36,8 +36,8 @@ namespace ArtShop.Data.Models
         [Required]
         public required string CreatorId { get; set; }
 
-        [ForeignKey(nameof(CreatorId))]
-        public required IdentityUser Creator { get; set; }
+        [ForeignKey(nameof(CreatorId))] 
+        public IdentityUser Creator { get; set; } = null!;
 
         public List<ArtworkCategory> ArtworksCategories { get; set; } = [];
         

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static ArtShop.Data.Common.GlobalConstants.ReviewValidationConstants;
+using static ArtShop.Data.Common.ValidationConstants.ReviewValidationConstants;
 
 namespace ArtShop.Data.Models
 {

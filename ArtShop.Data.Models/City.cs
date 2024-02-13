@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static ArtShop.Data.Common.GlobalConstants.CityValidationConstants;
+using static ArtShop.Data.Common.ValidationConstants.CityValidationConstants;
 
 namespace ArtShop.Data.Models
 {

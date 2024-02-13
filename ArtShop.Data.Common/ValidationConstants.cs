@@ -1,6 +1,6 @@
 ﻿namespace ArtShop.Data.Common
 {
-    public static class GlobalConstants
+    public static class ValidationConstants
     {
         public static class ArtworkValidationConstants
         {
@@ -53,6 +53,13 @@
 
             public const int RatingMinValue = 0;
             public const int RatingMaxValue = 5;
+        }
+
+        public static class ErrorMessages
+        {
+            public const string RequiredErrorMessage = "The field {0} is required.";
+            public const string StringLengthErrorMessage = "The field {0} must be between {2} and {1} characters.";
+            public const string NumberValueErrorMessage = "The {0} must be between {1} and {2}.";
         }
     }
 }

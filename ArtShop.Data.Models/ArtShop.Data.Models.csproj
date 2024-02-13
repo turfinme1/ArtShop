@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Messaging\" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArtShop.Data\ArtShop.Data.csproj" />
-    <ProjectReference Include="..\ArtShop.Web.ViewModels\ArtShop.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\ArtShop.Data.Common\ArtShop.Data.Common.csproj" />
   </ItemGroup>
 
 </Project>

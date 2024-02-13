@@ -1,4 +1,4 @@
-﻿using ArtShop.Data.Data.Configurations;
+﻿using ArtShop.Data.Configurations;
 using ArtShop.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
