@@ -2,11 +2,16 @@
 using ArtShop.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace ArtShop.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -19,6 +24,21 @@ namespace ArtShop.Data
             builder.ApplyConfiguration(new ReviewModelConfiguration());
 
             base.OnModelCreating(builder);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                IConfigurationRoot configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json")
+                    .Build();
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<Artwork> Artworks { get; set; }

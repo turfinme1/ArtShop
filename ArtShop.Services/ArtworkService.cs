@@ -46,18 +46,17 @@ namespace ArtShop.Services
         }
 
         public async Task AddAsync(ArtworkViewModel model)
-        {
+        {   
             var entity = new Artwork()
             {
                 Id = model.Id,
                 Name = model.Name,
                 Summary = model.Summary,
                 Description = model.Description,
-                OverallRatingScore = model.OverallRatingScore,
                 Price = model.Price,
                 Quantity = model.Quantity,
                 CreatorId = model.CreatorId,
-                CreatedOn = DateTime.UtcNow
+                CreatedOn = DateTime.UtcNow,
             };
 
             await repository.AddAsync(entity);
@@ -72,6 +71,12 @@ namespace ArtShop.Services
             {
                 throw new ArgumentException();
             }
+
+            entity.Name = model.Name;
+            entity.Summary = model.Summary;
+            entity.Description = model.Description;
+            entity.Price = model.Price;
+            entity.Quantity = model.Quantity;
 
             repository.Update(entity);
             await repository.SaveChangesAsync();

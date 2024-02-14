@@ -1,7 +1,8 @@
-﻿using ArtShop.Services;
-using ArtShop.Services.Contracts;
+﻿using ArtShop.Services.Contracts;
+using ArtShop.Web.ViewModels.Artwork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ArtShop.Web.Controllers
 {
@@ -12,79 +13,87 @@ namespace ArtShop.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Index()
         {
-            var model =await service.GetAllAsync();
+            var model = await service.GetAllAsync();
             return View(model);
         }
 
-        // GET: ArtworkController/Details/5
+        [HttpGet]
         [AllowAnonymous]
-
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var model = await service.GetByIdAsync(id);
+
+            if (model is null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
         }
 
-        // GET: ArtworkController/Create
+        [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var model = new ArtworkViewModel();
+            return View(model);
         }
 
-        // POST: ArtworkController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(ArtworkViewModel model)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return View(model);
             }
-            catch
-            {
-                return View();
-            }
+
+            var creatorId = GetUserId();
+            model.CreatorId = creatorId!;
+
+            await service.AddAsync(model);
+
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: ArtworkController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await service.GetByIdAsync(id);
+
+            if (model is null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
         }
 
-        // POST: ArtworkController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(ArtworkViewModel model)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                return View(model);
             }
-            catch
-            {
-                return View();
-            }
+
+            await service.UpdateAsync(model);
+
+            return RedirectToAction(nameof(Index));
         }
 
-        // GET: ArtworkController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ArtworkController/Delete/5
-        [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await service.DeleteAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private string? GetUserId()
+        {
+            return User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
     }
 }

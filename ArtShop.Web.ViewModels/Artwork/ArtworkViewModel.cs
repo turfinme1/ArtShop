@@ -12,19 +12,19 @@ namespace ArtShop.Web.ViewModels.Artwork
         [StringLength(NameMaxLength, 
             MinimumLength = NameMinLength, 
             ErrorMessage = StringLengthErrorMessage)]
-        public required string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(SummaryMaxLength, 
             MinimumLength = SummaryMinLength, 
             ErrorMessage = StringLengthErrorMessage)]
-        public required string Summary { get; set; }
+        public string Summary { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         [StringLength(DescriptionMaxLength, 
             MinimumLength = DescriptionMinLength, 
             ErrorMessage = StringLengthErrorMessage)]
-        public required string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         [Required(ErrorMessage = RequiredErrorMessage)]
         [Range(PriceMinValue,
@@ -36,9 +36,8 @@ namespace ArtShop.Web.ViewModels.Artwork
         public int Quantity { get; set; }
 
         public double OverallRatingScore { get; set; }
-        
-        [Required]
-        public required string CreatorId { get; set; }
+
+        public string CreatorId { get; set; } = string.Empty;
 
         // TODO: list of categories model, orders model, reviews model
     }
