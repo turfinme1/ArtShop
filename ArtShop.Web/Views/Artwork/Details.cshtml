@@ -1,0 +1,53 @@
+﻿@model ArtworkViewModel
+
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div>
+                <figure>
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="d-block w-100" alt="Image">
+                </figure>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active">
+                    <h5 class="header-art">@Model.Name</h5>
+                    <h6>
+                        <a asp-action="">Mixed-media painting</a><br>
+                        <span>by</span>&nbsp;<a asp-action="">@Model.CreatorId</a>
+                    </h6>
+                    <p class="body1">
+                        <span class="header-art">$@Model.Price</span>
+
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><span><a asp-action="">Mixed-media painting</a> on Canvas</span></li>
+                        <li><span>One of a kind artwork</span></li>
+                        <li><span>Size: 60 x 60 x 2cm (unframed)</span></li>
+                        <li><span>Ready to hang</span></li>
+                        <li><span>Signed certificate of authenticity</span></li>
+                        <li><span>Style: <a asp-action="">Abstract</a></span></li>
+                        <li><span>Subject: <a asp-action="">Abstract and non-figurative</a></span></li>
+                    </ul>
+                    <div class="product-more"></div>
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-success">Add to Cart</button>
+                        <button type="button" class="btn btn-warning">Add to my favorites</button>
+                    </div>
+                </div>
+
+                <!-- Prints Tab -->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

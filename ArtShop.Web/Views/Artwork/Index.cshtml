@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ArtworkViewModel>
 
 @{
-    ViewData["Title"] = "All";
+    ViewData["Title"] = "Browse Artworks";
 }
 
 <h1>View</h1>
@@ -9,6 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -62,3 +63,125 @@
 }
     </tbody>
 </table>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+
+                <div class="card">
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/z-FSXCuHxYYi6HjoU9T5vKI9-lM=/500x0/product/8/0/b37c88b62b694a64bf22567a26556ccf_opt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+            }
+        </div>
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+            }
+        </div>
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+
+                <div class="card">
+                    <img src="https://images.pexels.com/photos/3779785/pexels-photo-3779785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+            }
+        </div>
+        
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+
+                <div class="card">
+                    <img src="https://d3rf6j5nx5r04a.cloudfront.net/z-FSXCuHxYYi6HjoU9T5vKI9-lM=/500x0/product/8/0/b37c88b62b694a64bf22567a26556ccf_opt.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <h5 class="card-subtitle">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                        <p class="card-text">@item.Quantity</p>
+                        <p class="card-text">@item.Price</p>
+                    </div>
+                    <a href="#" class="btn btn-primary">Add to favorites</a>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
