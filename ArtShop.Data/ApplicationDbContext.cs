@@ -50,5 +50,7 @@ namespace ArtShop.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Style> Styles { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
     }
 }

@@ -1,43 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
-using static ArtShop.Data.Common.ValidationConstants.ArtworkValidationConstants;
-using static ArtShop.Data.Common.ValidationConstants.ErrorMessages;
-
-namespace ArtShop.Web.ViewModels.Artwork
+﻿namespace ArtShop.Web.ViewModels.Artwork
 {
     public class ArtworkViewModel
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [StringLength(NameMaxLength, 
-            MinimumLength = NameMinLength, 
-            ErrorMessage = StringLengthErrorMessage)]
-        public string Name { get; set; } = string.Empty;
+        public required string Name { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [StringLength(SummaryMaxLength, 
-            MinimumLength = SummaryMinLength, 
-            ErrorMessage = StringLengthErrorMessage)]
-        public string Summary { get; set; } = string.Empty;
+        public required string Summary { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [StringLength(DescriptionMaxLength, 
-            MinimumLength = DescriptionMinLength, 
-            ErrorMessage = StringLengthErrorMessage)]
-        public string Description { get; set; } = string.Empty;
+        public required string Description { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
-        [Range(PriceMinValue,
-            PriceMaxValue,
-            ErrorMessage = NumberValueErrorMessage)]
         public decimal Price { get; set; }
 
-        [Required(ErrorMessage = RequiredErrorMessage)]
         public int Quantity { get; set; }
 
-        public double OverallRatingScore { get; set; }
+        public int YearMade { get; set; }
 
-        public string CreatorId { get; set; } = string.Empty;
+        public double Height { get; set; }
+
+        public double Width { get; set; }
+
+        public double? Depth { get; set; }
+
+        public bool IsFramed { get; set; }
+
+        public required string Style { get; set; }
+
+        public required string Subject { get; set; }
+
+        public required string CreatorName { get; set; }
 
         // TODO: list of categories model, orders model, reviews model
     }

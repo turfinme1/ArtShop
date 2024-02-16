@@ -27,11 +27,35 @@ namespace ArtShop.Data.Models
 
         [Required]
         public int Quantity { get; set; }
-
-        public double OverallRatingScore { get; set; }
-
+        
         [Required]
         public DateTime CreatedOn { get; set; }
+
+        [Required]
+        public int YearMade { get; set; }
+
+        [Required]
+        public double Height { get; set; }
+
+        [Required]
+        public double Width { get; set; }
+
+        public double? Depth { get; set; }
+
+        [Required]
+        public bool IsFramed { get; set; }
+
+        [Required]
+        public int StyleId { get; set; }
+
+        [ForeignKey(nameof(StyleId))]
+        public Style Style { get; set; } = null!;
+
+        [Required]
+        public int SubjectId { get; set; }
+
+        [ForeignKey(nameof(SubjectId))]
+        public Subject Subject { get; set; } = null!;
         
         [Required]
         public required string CreatorId { get; set; }

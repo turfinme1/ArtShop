@@ -1,10 +1,10 @@
-﻿@model ArtworkViewModel
+﻿@model ArtworkFormViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit2";
 }
 
-<h1>Edit</h1>
+<h1>Edit2</h1>
 
 <h4>Artwork</h4>
 <hr />
@@ -39,6 +39,51 @@
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="YearMade" class="control-label"></label>
+                <input asp-for="YearMade" class="form-control" />
+                <span asp-validation-for="YearMade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Height" class="control-label"></label>
+                <input asp-for="Height" class="form-control" />
+                <span asp-validation-for="Height" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Width" class="control-label"></label>
+                <input asp-for="Width" class="form-control" />
+                <span asp-validation-for="Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Depth" class="control-label"></label>
+                <input asp-for="Depth" class="form-control" />
+                <span asp-validation-for="Depth" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsFramed" /> @Html.DisplayNameFor(model => model.IsFramed)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="StyleId" class="control-label"></label>
+                <select asp-for="StyleId" class="form-control">
+                    @foreach (var style in Model.Styles)
+                    {
+                        <option value="@style.Id">@style.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="StyleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SubjectId" class="control-label"></label>
+                <select asp-for="SubjectId" class="form-control">
+                    @foreach (var subject in Model.Subjects)
+                    {
+                        <option value="@subject.Id">@subject.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -50,5 +95,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -15,6 +15,9 @@
 
             public const int PriceMinValue = 1;
             public const int PriceMaxValue = 1000000;
+
+            public const int YearMadeMinValue = 0;
+            public const int YearMadeMaxValue = 5000;
         }
 
         public static class AddressValidationConstants
@@ -53,6 +56,18 @@
 
             public const int RatingMinValue = 0;
             public const int RatingMaxValue = 5;
+        }
+
+        public static class StyleValidationConstants
+        {
+            public const int NameMinLength = 3;
+            public const int NameMaxLength = 100;
+        }
+
+        public static class SubjectValidationConstants
+        {
+            public const int NameMinLength = 3;
+            public const int NameMaxLength = 100;
         }
 
         public static class ErrorMessages

@@ -28,9 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Quantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverallRatingScore)
-            </th>
+
         </tr>
     </thead>
     <tbody>
@@ -51,9 +49,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverallRatingScore)
-            </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -104,7 +100,7 @@
                     <img src="https://d3rf6j5nx5r04a.cloudfront.net/BW9GeM7zEMwQd3FIzdcvrQ_H9Ic=/500x0/product/6/e/f9194e3442944011bb2caebaaf4784f8_opt.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">@item.Name</h4>
-                        <h5 class="card-subtitle">@item.Name</h5>
+                        <h5 class="card-subtitle">@item.CreatorName</h5>
                         <p class="card-text">@item.Summary</p>
                         <p class="card-text">@item.Quantity</p>
                         <p class="card-text">@item.Price</p>
