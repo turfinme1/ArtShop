@@ -5,6 +5,17 @@
 }
 
 <div class="container">
+    
+    <div>
+        <div class="container-fluid">
+            <h5>Author Information</h5>
+            <p>Total Artworks:5</p>
+            <p>Rating: </p>
+            <p>Location: </p>
+            <button type="button" class="btn btn-info">Contact Author</button>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-8">
             <div>
@@ -18,9 +29,9 @@
 
             <div class="tab-content">
                 <div class="tab-pane fade show active">
-                    <h5 class="header-art">@Model.Name</h5>
+                    <h5 class="header-art">@Model.Name @Model.YearMade</h5>
                     <h6>
-                        <a asp-action="">@Model.Style @Model.YearMade</a><br>
+                        <a asp-action="">@Model.Style </a><br>
                         <span>by</span>&nbsp;<a asp-action="">@Model.CreatorName</a>
                     </h6>
                     <p class="body1">

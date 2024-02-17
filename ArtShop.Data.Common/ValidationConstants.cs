@@ -16,8 +16,11 @@
             public const int PriceMinValue = 1;
             public const int PriceMaxValue = 1000000;
 
-            public const int YearMadeMinValue = 0;
+            public const int YearMadeMinValue = 1;
             public const int YearMadeMaxValue = 5000;
+
+            public const double DimensionMinValue = 0.1;
+            public const double DimensionMaxValue = 500;
         }
 
         public static class AddressValidationConstants

@@ -42,11 +42,14 @@ namespace ArtShop.Web.ViewModels.Artwork
         public int YearMade { get; set; }
 
         [Required]
+        [Range(DimensionMinValue,DimensionMaxValue)]
         public double Height { get; set; }
 
         [Required]
+        [Range(DimensionMinValue, DimensionMaxValue)]
         public double Width { get; set; }
 
+        [Range(DimensionMinValue, DimensionMaxValue)]
         public double? Depth { get; set; }
 
         [Required]
