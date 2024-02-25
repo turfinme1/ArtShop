@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ArtShop.Services\ArtShop.Services.csproj" />
+    <ProjectReference Include="..\ArtShop.Web.Infrastructure\ArtShop.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\ArtShop.Web.ViewModels\ArtShop.Web.ViewModels.csproj" />
   </ItemGroup>
 

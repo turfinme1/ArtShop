@@ -3,6 +3,8 @@ using ArtShop.Data.Common.Repositories;
 using ArtShop.Data.Repositories;
 using ArtShop.Services;
 using ArtShop.Services.Contracts;
+using ArtShop.Web.Infrastructure.ModelBinders.DateTimeBinder;
+using ArtShop.Web.Infrastructure.ModelBinders.DecimalBinder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +18,12 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+    options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider());
+});
 
 builder.Services.AddScoped<IArtworkService, ArtworkService>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
