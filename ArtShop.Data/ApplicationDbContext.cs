@@ -1,5 +1,6 @@
 ﻿using ArtShop.Data.Configurations;
 using ArtShop.Data.Models;
+using ArtShop.Data.Seeding;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,9 @@ namespace ArtShop.Data
             builder.ApplyConfiguration(new ArtworkOrderModelConfiguration());
             builder.ApplyConfiguration(new ArtworkCategoryModelConfiguration());
             builder.ApplyConfiguration(new ReviewModelConfiguration());
+            builder.ApplyConfiguration(new CountrySeeder());
+            builder.ApplyConfiguration(new SubjectSeeder());
+            builder.ApplyConfiguration(new StyleSeeder());
 
             base.OnModelCreating(builder);
         }
@@ -34,6 +38,7 @@ namespace ArtShop.Data
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json")
                     .Build();
+
                 var connectionString = configuration.GetConnectionString("DefaultConnection");
                 optionsBuilder.UseSqlServer(connectionString);
             }

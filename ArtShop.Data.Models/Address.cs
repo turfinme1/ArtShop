@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ArtShop.Data.Common.Models;
 using static ArtShop.Data.Common.ValidationConstants.AddressValidationConstants;
 
 namespace ArtShop.Data.Models
 {
-    public class Address
+    public class Address : BaseModel
     {
         [Key]
         public int Id { get; set; }

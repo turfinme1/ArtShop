@@ -18,7 +18,6 @@ namespace ArtShop.Web.Infrastructure.ModelBinders.DecimalBinder
                 bool success = false;
                 string strValue = valueResult.FirstValue.Trim();
 
-                //strValue = strValue.Replace(",", CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
                 strValue = strValue.Replace(".", CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
 
                 try

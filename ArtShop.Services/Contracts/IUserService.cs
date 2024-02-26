@@ -2,7 +2,7 @@
 
 namespace ArtShop.Services.Contracts
 {
-    public interface ICreatorService
+    public interface IUserService
     {
         Task<CreatorViewModel?> GetByIdAsync(int id);
     }

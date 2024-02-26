@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ArtShop.Data.Common.Models;
 
 namespace ArtShop.Data.Models
 {
-    public class Order
+    public class Order : BaseModel
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
         public decimal TotalPrice { get; set; }
-
-        [Required]
-        public DateTime CreatedOn { get; set; }
-
+        
         [Required]
         public required string UserId { get; set; }
 

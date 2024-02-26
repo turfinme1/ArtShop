@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ArtShop.Services
 {
-    public class CreatorService(IRepository<IdentityUser> repository) : ICreatorService
+    public class UserService(IRepository<IdentityUser> repository) : IUserService
     {
         public async Task<CreatorViewModel?> GetByIdAsync(int id)
         {   
