@@ -1,5 +1,7 @@
 using ArtShop.Data;
 using ArtShop.Data.Common.Repositories;
+using ArtShop.Data.ImageStore;
+using ArtShop.Data.ImageStore.Configuration;
 using ArtShop.Data.Repositories;
 using ArtShop.Services;
 using ArtShop.Services.Contracts;
@@ -25,6 +27,12 @@ builder.Services.AddControllersWithViews(options =>
     options.ModelBinderProviders.Insert(1, new DateTimeModelBinderProvider());
 });
 
+builder.Services.Configure<MongoDbConfiguration>(
+    builder.Configuration.GetSection("MongoDbConfiguration"));
+
+builder.Services.AddSingleton<ArtworkImageDbContext>();
+
+builder.Services.AddScoped<IArtworkImageStoreService, ArtworkImageStoreService>();
 builder.Services.AddScoped<IArtworkService, ArtworkService>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<IStyleService, StyleService>();

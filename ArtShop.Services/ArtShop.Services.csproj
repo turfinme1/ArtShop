@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArtShop.Data.MongoDb\ArtShop.Data.ImageStore.csproj" />
     <ProjectReference Include="..\ArtShop.Data\ArtShop.Data.csproj" />
     <ProjectReference Include="..\ArtShop.Web.ViewModels\ArtShop.Web.ViewModels.csproj" />
   </ItemGroup>
